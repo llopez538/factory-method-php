@@ -37,17 +37,16 @@ class Unit
 
     public function attack(Unit $opponent)
     {
-        if (! $this->weapon) {
-            throw new Exception("The unit has not weapon");
-        }
-        show($this->weapon->getDescription($this, $opponent));
+        $attack = $this->weapon->createAttack();
 
-        $opponent->takeDamage($this->weapon->getDamage());
+        show($attack->getDescription($this, $opponent));
+
+        $opponent->takeDamage($attack);
     }
 
-    public function takeDamage($damage)
+    public function takeDamage(Attack $attack)
     {
-        $this->hp -= $this->absorbDamage($damage);
+        $this->hp -= $this->absorbDamage($attack);
         if ($this->hp < 0) {
             $this->hp = 0;
         }
@@ -70,11 +69,11 @@ class Unit
         exit();
     }
 
-    protected function absorbDamage($damage)
+    protected function absorbDamage(Attack $attack)
     {
         if($this->armor) {
-            $damage = $this->armor->absorbDamage($damage);
+            return $this->armor->absorbDamage($attack);
         }
-        return $damage;
+        return $attack->getDamage();
     }
 } 

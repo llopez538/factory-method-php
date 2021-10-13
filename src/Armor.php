@@ -4,5 +4,5 @@ namespace Styde;
 
 interface Armor
 {
-    public function absorbDamage($armor);
+    public function absorbDamage(Attack $attack);
 }

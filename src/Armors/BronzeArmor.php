@@ -3,10 +3,11 @@
 namespace Styde\Armors;
 
 use Styde\Armor;
+use Styde\Attack;
 
 class BronzeArmor implements Armor
 {
-    public function absorbDamage($damage) {
-        return round($damage/2);
+    public function absorbDamage(Attack $attack) {
+        return round($attack->getDamage() / 2);
     }
 }

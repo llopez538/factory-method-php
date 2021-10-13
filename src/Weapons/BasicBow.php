@@ -2,7 +2,7 @@
 
 namespace Styde\Weapons;
 
-use Styde\Weapon\Bow;
+use Styde\Weapon;
 use Styde\Unit;
 
 class BasicBow extends Weapon
