@@ -2,10 +2,7 @@
 
 namespace Styde;
 
-use Styde\Weapon;
-use Exception;
-
-abstract class Unit
+class Unit
 {
     protected $hp = 40;
     protected $name;

@@ -5,12 +5,8 @@ namespace Styde\Weapons;
 use Styde\Weapon\Bow;
 use Styde\Unit;
 
-class BasicBow extends Bow
+class BasicBow extends Weapon
 {
     protected $damage = 20;
-
-    public function getDescription(Unit $attaker, Unit $opponent)
-    {
-        return "{$attaker->getName()} ataca con la espada a {$opponent->getName()}";
-    }
+    protected $description = ':unit ataca con la espada a :opponent';
 }
